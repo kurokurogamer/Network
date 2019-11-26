@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestScript : MonoBehaviour
+public class DebugGizmos : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,13 @@ public class TestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.forward;
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Matrix4x4 matrix = transform.localToWorldMatrix;
+        Gizmos.matrix = matrix;
+        Gizmos.DrawCube(Vector3.zero, Vector3.one);
     }
 }
