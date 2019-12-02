@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour
     [SerializeField]
     private float speed = 0.5f;
     [SerializeField]
-    private float _rotaSpeed = 20;
+    private float _rotaSpeed = 30;
     private float _angle;
 
     // Start is called before the first frame update
