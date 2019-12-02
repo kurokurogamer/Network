@@ -10,35 +10,15 @@ public class FollowCamera : MonoBehaviour
     private float _distance = 10;
     [SerializeField, Tooltip("カメラの角度")]
     private float _rotate = 0;
-    private CarRotate _carRot = null;
     void Start()
     {
-        _carRot = _target.GetComponent<CarRotate>();
     }
 
     // ターゲットの追従
-    private void Follow()
+    public void Follow(float angle)
     {
-        if (_carRot == null)
-        {
-            return;
-        }
-        transform.position = -_target.transform.forward * _distance;
-        transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.RotateAround(_target.transform.position, Vector3.up, _carRot.Angle);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    // カメラ処理は移動が完了した後に行いたいのでLateUpdate内で書く
-    private void LateUpdate()
-    {
-        Follow();
+        Vector3 distance = _target.transform.forward * -_distance;
+        transform.position = new Vector3(_target.transform.position.x, 4, _target.transform.position.z) + distance;
+        transform.RotateAround(_target.transform.position, Vector3.up, angle);
     }
 }
