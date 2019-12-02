@@ -8,13 +8,16 @@ public class CarController : MonoBehaviour
     //Animator animator;
 
     [SerializeField]
-    private float speed;
+    private float speed = 0.5f;
+    [SerializeField]
+    private float _rotaSpeed = 20;
     private float _angle;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        _angle = 0;
     }
 
     // Update is called once per frame
@@ -35,7 +38,7 @@ public class CarController : MonoBehaviour
         //右回転
         if(Input.GetKey(KeyCode.RightArrow))
         {
-            _angle += Time.deltaTime * 1;
+            _angle += Time.deltaTime * _rotaSpeed;
            // transform.rotation += 
         }
 
@@ -43,9 +46,8 @@ public class CarController : MonoBehaviour
         //左回転
         if(Input.GetKey(KeyCode.LeftArrow))
         {
-            _angle -= Time.deltaTime * 1;
-
+            _angle -= Time.deltaTime * _rotaSpeed;
         }
-
+        transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _angle, transform.eulerAngles.z));
     }
 }
