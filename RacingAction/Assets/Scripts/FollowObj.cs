@@ -33,8 +33,9 @@ public class FollowObj : MonoBehaviour
 
     public void SetAngle()
     {
-        _angle = _target.transform.eulerAngles.y - transform.eulerAngles.y;
         transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _target.transform.eulerAngles.y, transform.eulerAngles.z));
+        _angle = _target.transform.eulerAngles.y - transform.eulerAngles.y;
+
     }
 
     void Update()
