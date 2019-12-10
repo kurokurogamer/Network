@@ -19,6 +19,7 @@ public class FollowCamera : MonoBehaviour
     {
         Vector3 distance = _target.transform.forward * -_distance;
         transform.position = new Vector3(_target.transform.position.x, 4, _target.transform.position.z) + distance;
+        transform.rotation = Quaternion.Euler(_rotate, _target.transform.eulerAngles.y, _target.transform.eulerAngles.z);
         transform.RotateAround(_target.transform.position, Vector3.up, angle);
     }
 }

@@ -74,7 +74,7 @@ public class Controlle : MonoBehaviour
     // 右カーブボタン
     public bool CurveObjectRight()
     {
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal2") >= 1)
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("Horizontal") >= 1)
         {
             Debug.Log("カーブ(右)");
             return true;
@@ -84,7 +84,7 @@ public class Controlle : MonoBehaviour
     // 左カーブボタン
     public bool CurveObjectLeft()
     {
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal2") <= -1)
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") <= -1)
         {
             Debug.Log("カーブ(左)");
             return true;
