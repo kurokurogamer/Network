@@ -5,7 +5,7 @@ MySQL
 言語
 C#
 繋ぎ方
-http
+websocket
 ポート番号
 
 渡すもの
@@ -20,3 +20,4 @@ http
 スレッド化
 
 
+http://edom18.hateblo.jp/entry/2017/11/19/104232
