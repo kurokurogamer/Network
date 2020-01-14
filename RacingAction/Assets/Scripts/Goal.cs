@@ -15,4 +15,11 @@ public class Gool : MonoBehaviour
     {
         
     }
+   void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Car")
+        {
+           // other.  CarStateからChengStatsを呼んで変更する
+        }
+    }
 }

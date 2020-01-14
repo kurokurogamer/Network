@@ -12,7 +12,7 @@ public class CarState
     public float velocity;
     [DataMember(Name = "")]
     public float[] point;
-
+    bool goalCar = false;//(名前仮)(車がゴールしているのか)
     public CarState()
     {
         // 初期加速度リセット
@@ -23,5 +23,10 @@ public class CarState
         {
             point[i] = 0;
         }
+    }
+    // 車のゴールステータスを変更する
+    public void ChengGoalStats(bool stats)
+    {
+        goalCar = stats;
     }
 }
