@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
-    //public Text text;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,7 @@ public class Goal : MonoBehaviour
 
         if (collider.tag == "Player")
         {
+           
             Debug.Log("ゴール");
         }        
        
