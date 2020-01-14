@@ -11,5 +11,17 @@ public class CarState
     [DataMember(Name = "")]
     public float velocity;
     [DataMember(Name = "")]
-    public Vector3 point;
+    public float[] point;
+
+    public CarState()
+    {
+        // 初期加速度リセット
+        velocity = 0;
+        // 配列初期化
+        point = new float[3];
+        for(int i = 0; i < point.Length; i++)
+        {
+            point[i] = 0;
+        }
+    }
 }

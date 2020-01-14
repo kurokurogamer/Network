@@ -24,8 +24,6 @@ public class CarController : MonoBehaviour
     {
         state = new CarState()
         {
-            velocity = 0,
-            point = new Vector3(0,0,0)
         };
         _rigid = GetComponent<Rigidbody>();
         _controlle = GetComponent<Controlle>();
