@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Start : MonoBehaviour
 {
-  //  public Text text;
+    [SerializeField]
+    private TextSetter _setter;
     // Start is called before the first frame update
     void Starts()
     {
@@ -13,10 +14,12 @@ public class Start : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
     {
+        if (collider.tag == "Player")
+        {
+            _setter.SetText("Start");
             Debug.Log("スタート");
-        
-           
-       // text.enabled = true;
+            // text.enabled = true;
+        }
     }
     // Update is called once per frame
     void Update()
