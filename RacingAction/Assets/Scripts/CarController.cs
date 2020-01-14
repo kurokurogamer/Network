@@ -10,6 +10,8 @@ public class CarController : MonoBehaviour
 
     [SerializeField, Tooltip("瞬間加速度")]
     private float _speed = 0.5f;
+    [SerializeField, Tooltip("最高速度")]
+    private float _maxSpeed = 10.0f;
     // 加速度
     private float _nowVelocity = 0;
     private CarState state;
@@ -38,6 +40,7 @@ public class CarController : MonoBehaviour
         if(_controlle.AccelerateObject())
         {
             _nowVelocity += _speed;
+            SetVelocity();
         }
         else
         {
@@ -57,6 +60,7 @@ public class CarController : MonoBehaviour
         if(_controlle.DecelerateObject())
         {
             _nowVelocity -= _speed;
+            SetVelocity();
         }
         else
         {
@@ -90,6 +94,14 @@ public class CarController : MonoBehaviour
     private void SetVelocity()
     {
         _rigid.velocity = transform.forward * _nowVelocity;
+        if(Mathf.Abs(_rigid.velocity.x) > _maxSpeed)
+        {
+            _rigid.velocity = new Vector3(_maxSpeed * (Mathf.Abs(_rigid.velocity.x) / _rigid.velocity.x), _rigid.velocity.y, _rigid.velocity.z);
+        }
+        if (Mathf.Abs(_rigid.velocity.z) > _maxSpeed)
+        {
+            _rigid.velocity = new Vector3(_rigid.velocity.x, _rigid.velocity.y, _maxSpeed * (Mathf.Abs(_rigid.velocity.z) / _rigid.velocity.z));
+        }
     }
 
     private void SetRotation()
@@ -106,8 +118,6 @@ public class CarController : MonoBehaviour
         Brake();
         // カーブ
         Curve();
-        // ブースト
-        SetVelocity();
         // 回転反映
         SetRotation();
 
