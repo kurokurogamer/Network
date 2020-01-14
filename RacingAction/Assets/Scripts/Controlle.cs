@@ -6,14 +6,14 @@ public class Controlle : MonoBehaviour
 {
     public void Update()
     {
-        AccelerateObject();
-        DecelerateObject();
-        SSAttackTarget();
-        // FBAttackTarget()
-        UseItem();
-        CurveObjectRight();
-        CurveObjectLeft();
-        InputMouse();
+        //AccelerateObject();
+        //DecelerateObject();
+        //SSAttackTarget();
+        //// FBAttackTarget()
+        //UseItem();
+        //CurveObjectRight();
+        //CurveObjectLeft();
+        //InputMouse();
     }
     // 加速ボタン
     public bool AccelerateObject()
