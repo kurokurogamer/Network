@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Goal : MonoBehaviour
 {
@@ -17,12 +16,13 @@ public class Goal : MonoBehaviour
         if (collider.tag == "Player")
         {
             Debug.Log("ゴール");
+            CarState car;
+            car = collider.GetComponent<CarState>();
+            if (car != null)
+            {
+                car.ChengGoalStats(true);//からChengStatsを呼んで変更する
+            }
         }
-        if (collider.gameObject.name == "Car")
-        {
-            collider.ChengGoalStats(true);//からChengStatsを呼んで変更する
-        }
-
         //text.enabled = true;
 
     }
