@@ -931,20 +931,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
+    m_FontSize: 150
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 150
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Goal
-
-'
+  m_Text: Goal
 --- !u!222 &1022686214
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1412,6 +1410,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1439382203, guid: de6434dd20796964780953eb89781129, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648020872994261120, guid: de6434dd20796964780953eb89781129,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de6434dd20796964780953eb89781129, type: 3}
 --- !u!1 &1843169551 stripped
@@ -1508,7 +1515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38a15e18b1cd834b8a8990be12e1a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _setter: {fileID: 1022686215}
 --- !u!1 &2028308359
 GameObject:
   m_ObjectHideFlags: 0

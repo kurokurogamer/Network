@@ -5,7 +5,7 @@ MySQL
 言語
 C#
 繋ぎ方
-websocket
+websocket　TCP/IP
 ポート番号
 
 渡すもの
@@ -17,7 +17,7 @@ websocket
 渡し方
 
 同期
-スレッド化
+疑似スレッド化
 
 
 http://edom18.hateblo.jp/entry/2017/11/19/104232
