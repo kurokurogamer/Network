@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.Serialization;
 
 [DataContract]
-public class CarState
+public class CarState : MonoBehaviour
 {
     [DataMember(Name = "")]
     public float velocity;
@@ -19,7 +19,7 @@ public class CarState
         velocity = 0;
         // 配列初期化
         point = new float[3];
-        for(int i = 0; i < point.Length; i++)
+        for (int i = 0; i < point.Length; i++)
         {
             point[i] = 0;
         }

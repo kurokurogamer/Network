@@ -10,6 +10,7 @@ public class TextSetter : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
+        gameObject.SetActive(false);
     }
 
     public void SetText(string str, float delteTime = 1.0f)
