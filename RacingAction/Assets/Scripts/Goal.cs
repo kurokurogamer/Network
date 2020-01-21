@@ -20,10 +20,10 @@ public class Goal : MonoBehaviour
             Debug.Log("ゴール");
             CarState car;
             car = collider.GetComponent<CarState>();
-            if (car != null)
-            {
-                car.ChengGoalStats(true);//からChengStatsを呼んで変更する
-            }
+           if (car != null)
+           {
+               car.ChengGoalStats(true);//からChengStatsを呼んで変更する
+           }
         }
         //text.enabled = true;
 
