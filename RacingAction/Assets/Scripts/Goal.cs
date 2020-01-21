@@ -17,21 +17,17 @@ public class Goal : MonoBehaviour
         if (collider.tag == "Player")
         {
             Debug.Log("ゴール");
-        }        
-       
+        }
+        if (collider.gameObject.name == "Car")
+        {
+            collider.ChengGoalStats(true);//からChengStatsを呼んで変更する
+        }
+
         //text.enabled = true;
 
-   }
+    }
     // Update is called once per frame
     void Update()
     {
-       
-    }
-   void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.name == "Car")
-        {
-           // other.  CarStateからChengStatsを呼んで変更する
-        }
     }
 }
