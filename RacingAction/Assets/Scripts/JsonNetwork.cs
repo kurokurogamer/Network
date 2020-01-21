@@ -10,30 +10,75 @@ using System.Text;
 [Serializable]
 public class JsonNetwork : MonoBehaviour
 {
-    CarState[] player;
+    // プレイヤーのステータス
+    private List<CarState> _playerList = new List<CarState>();
+
+    // シングルトン化するべき？
+    //public static JsonNetwork instance;
+
+    //private void Awake()
+    //{
+    //    if(instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(this);
+    //    }
+    //    else
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
     private void Start()
     {
-        player = new CarState[2];
-        player[0] = new CarState()
-        {
-        };
-        player[1] = new CarState()
-        {
-        };
-        List<CarState> pList = new List<CarState>();
-        pList.Add(player[0]);
-        pList.Add(player[1]);
-        string json = "{ \"velocity\": 1, \"point\": [1, 0, 3]}";
-        var state = JsonUtility.FromJson<CarState>(json);
-        Debug.Log(player[0].velocity + "プレイヤー1");
-        Debug.Log(player[1].velocity + "プレイヤー2");
-        Debug.Log(state.velocity + "JSONから");
-        Debug.Log(state.point[0] + "JSONから");
-        Debug.Log(state.point[1] + "JSONから");
-        Debug.Log(state.point[2] + "JSONから");
+
     }
+
+    public void AddPlayer(CarState carState)
+    {
+        // Playerを登録
+        _playerList.Add(carState);
+        Debug.Log(_playerList[_playerList.Count - 1] + "プレイヤー" + (_playerList.Count - 1));
+        // ここをNetworkの処理にする。
+        var json = JsonUtility.ToJson(carState);
+        Debug.Log(json);
+    }
+
+    // 車のステータス
+    public CarState GetPlayerState(int id)
+    {
+        // プレイヤーのステータスを返す
+        return _playerList[id];
+    }
+
+    public void JsonChange()
+    {
+        string json = "";
+        for (int i = 0; i < 2; i++)
+        {
+            // json形式に変換
+            json = JsonUtility.ToJson(_playerList);
+            // Networkに送る
+        }
+        Debug.Log(json);
+    }
+
+    public void SetGoal()
+    {
+
+    }
+
+    public CarState GetNetworkState(int id)
+    {
+        // ここをNetworkの処理にする。
+        var json = JsonUtility.ToJson(_playerList[id]);
+        // json形式からクラスに変換
+        var state = JsonUtility.FromJson<CarState>(json);
+        return state;
+    }
+
     void Update()
     {
+
     }
 }
