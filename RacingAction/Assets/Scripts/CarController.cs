@@ -4,40 +4,80 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    // プレイヤーのステータス
+    private CarState _state;
+
     private Rigidbody _rigid;
     // コントローラー
     private Controlle _controlle;
-
+    private float _nowVelocity;
     [SerializeField, Tooltip("瞬間加速度")]
     private float _speed = 0.5f;
     [SerializeField, Tooltip("最高速度")]
     private float _maxSpeed = 10.0f;
-    // 加速度
-    private float _nowVelocity = 0;
-    private CarState state;
     [SerializeField, Tooltip("回転速度")]
     private float _rotaSpeed = 30;
+
     // 現在の回転角度
     private float _angle;
+<<<<<<< HEAD
     //クラッシュフラグ
     bool CrashFlag;
     //クラッシュ回復までの時間
    private int RecoveryCrash = 2;
     // カウンター
     int count;
+=======
+    // 衝突フラグ
+    private bool _colFlag;
+    [SerializeField, Tooltip("プレイヤーID")]
+    private int _id = 0;
+    public int ID
+    {
+        get { return _id; }
+    }
+
+    [SerializeField]
+    private JsonNetwork _network = null;
+>>>>>>> ce8ff61d649e63d53c826cbd7f3d18c9c3d8237b
     // Start is called before the first frame update
     void Start()
     {
-        state = new CarState()
-        {
-        };
         _rigid = GetComponent<Rigidbody>();
         _controlle = GetComponent<Controlle>();
-        _nowVelocity = 0;
         _angle = 0;
+<<<<<<< HEAD
         count = 0;
         CrashFlag = false;
+=======
+        _colFlag = false;
+        // プレイヤーのステータスを生成
+        _state = new CarState();
+        _state.velocity = 0;
+        _state.pos = new float[3];
+        _state.pos[0] = transform.position.x;
+        _state.pos[1] = transform.position.y;
+        _state.pos[2] = transform.position.z;
+        _state.goalCar = false;
+        Debug.Log(_state);
+        if(_network != null)
+        {
+            // Networkの管理クラスに登録
+            _network.AddPlayer(_state);
+        }
+        
     }
+
+    public CarState NetWork()
+    {
+        if(_network == null)
+        {
+            return _state;
+        }
+        return _state;
+>>>>>>> ce8ff61d649e63d53c826cbd7f3d18c9c3d8237b
+    }
+
     // 加速処理
     private void Accelerator()
     {
@@ -117,6 +157,7 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         if (CrashFlag == true)
         {
             if (count++ > RecoveryCrash)
@@ -137,6 +178,16 @@ public class CarController : MonoBehaviour
             SetRotation();
         }
 
+=======
+        // アクセル
+        Accelerator();
+        // ブレーキ
+        Brake();
+        // カーブ
+        Curve();
+        // 回転反映
+        SetRotation();
+>>>>>>> ce8ff61d649e63d53c826cbd7f3d18c9c3d8237b
     }
     public void  SetCrashFlag(bool flag)
     {

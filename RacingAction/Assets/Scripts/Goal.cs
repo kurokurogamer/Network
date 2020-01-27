@@ -6,6 +6,8 @@ public class Goal : MonoBehaviour
 {
     [SerializeField]
     private TextSetter _setter;
+    [SerializeField]
+    private JsonNetwork _network;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +20,15 @@ public class Goal : MonoBehaviour
         {
             _setter.SetText("Goal");
             Debug.Log("ゴール");
-            CarState car;
-            car = collider.GetComponent<CarState>();
-           if (car != null)
-           {
-               car.ChengGoalStats(true);//からChengStatsを呼んで変更する
-           }
+            // CarState car;
+            // car = collider.GetComponent<CarState>();
+            if (_network != null)
+            {
+                var car = collider.GetComponent<CarController>();
+                
+                // ネットワーククラスにゴール判定を送る
+                //car.ChengGoalStats(true);//からChengStatsを呼んで変更する
+            }
         }
         //text.enabled = true;
 
