@@ -19,8 +19,12 @@ public class CarController : MonoBehaviour
     private float _rotaSpeed = 30;
     // 現在の回転角度
     private float _angle;
-    // 衝突フラグ
-    private bool colFlag;
+    //クラッシュフラグ
+    bool CrashFlag;
+    //クラッシュ回復までの時間
+   private int RecoveryCrash = 2;
+    // カウンター
+    int count;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +35,8 @@ public class CarController : MonoBehaviour
         _controlle = GetComponent<Controlle>();
         _nowVelocity = 0;
         _angle = 0;
-        colFlag = false;
+        count = 0;
+        CrashFlag = false;
     }
     // 加速処理
     private void Accelerator()
@@ -112,19 +117,29 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // アクセル
-        Accelerator();
-        // ブレーキ
-        Brake();
-        // カーブ
-        Curve();
-        // 回転反映
-        SetRotation();
+        if (CrashFlag == true)
+        {
+            if (count++ > RecoveryCrash)
+            {
+                CrashFlag = false;
+                count = 0;
+            }
+        }
+        else
+        {
+            // アクセル
+            Accelerator();
+            // ブレーキ
+            Brake();
+            // カーブ
+            Curve();
+            // 回転反映
+            SetRotation();
+        }
 
     }
-
-    private void OnCollisionStay(Collision collision)
+    public void  SetCrashFlag(bool flag)
     {
-
+        CrashFlag = flag;
     }
 }
