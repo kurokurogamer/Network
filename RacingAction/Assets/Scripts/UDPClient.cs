@@ -24,11 +24,14 @@ public class UDPClient : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            IPEndPoint remoteEP = null;
-            byte[] data = udp.Receive(ref remoteEP);
-            string text = Encoding.ASCII.GetString(data);
-            Debug.Log(text);
+            SendData("");
         }
+    }
+
+    public void SendData(string json)
+    {
+        byte[] dgram = Encoding.UTF8.GetBytes(json);
+        udp.Send(dgram, dgram.Length);
     }
 
     // Update is called once per frame
