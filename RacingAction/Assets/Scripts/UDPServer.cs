@@ -10,7 +10,7 @@ using System.Threading;
 
 public class UDPServer : MonoBehaviour
 {
-    private string ipAddres = "172.20.39.22";
+    private string ipAddres = "172.20.39.32";
     private int _port = 2000;
     private UdpClient udp;
     private Thread thread;
@@ -19,7 +19,6 @@ public class UDPServer : MonoBehaviour
     void Start()
     {
         udp = new UdpClient(ipAddres, _port);
-        udp.Client.ReceiveTimeout = 1000;
         thread = new Thread(new ThreadStart(ThreadMethod));
         thread.Start();
     }
@@ -32,6 +31,7 @@ public class UDPServer : MonoBehaviour
 
     private void ThreadMethod()
     {
+        Debug.Log("通信を行います");
         while (true)
         {
             IPEndPoint remoteEP = null;

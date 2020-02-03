@@ -28,8 +28,6 @@ public class UDPClient : MonoBehaviour
             byte[] data = udp.Receive(ref remoteEP);
             string text = Encoding.ASCII.GetString(data);
             Debug.Log(text);
-
-            Debug.Log(udp);
         }
     }
 
