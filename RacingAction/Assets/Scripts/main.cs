@@ -44,10 +44,6 @@ public class main : MonoBehaviour
         }
         if (device == 'B')
         {
-            foreach(var bytes in ScanIPAddr.GetByte())
-            {
-                car.transform.position = new Vector3(bytes[0], bytes[1], bytes[2]);
-            }
         }
     }
 
