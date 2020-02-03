@@ -52,6 +52,11 @@ public class CarController : MonoBehaviour
         _network.AddPlayer(_state);
     }
 
+    public CarState GetState()
+    {
+        return _state;
+    }
+
     //public CarState NetWork()
     //{
     //    if(_network == null)

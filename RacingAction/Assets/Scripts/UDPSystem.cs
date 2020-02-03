@@ -41,7 +41,7 @@ public class UDPSystem {
  
  
     public string recIP , sendIP ;
-    public int recPort = 5000, sendPort = 5000;
+    public int recPort = 80, sendPort = 80;
  
     UdpClient udpClientSend;
     UdpClient tmpReceiver; //受信終了用TMP
