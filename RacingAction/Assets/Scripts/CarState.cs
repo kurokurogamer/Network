@@ -14,8 +14,6 @@ public struct CarState
     // 車の位置
     [DataMember(Name = "pos")]
     public float[] pos;
-    // 
-    public float angle;
     // ゴール判定
     [DataMember(Name = "goalCar")]
     public bool goalCar;

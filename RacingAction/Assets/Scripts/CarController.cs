@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CarController : MonoBehaviour
 {
@@ -47,22 +48,18 @@ public class CarController : MonoBehaviour
         _state.pos[2] = transform.position.z;
         _state.goalCar = false;
         Debug.Log(_state);
-        if(_network != null)
-        {
-            // Networkの管理クラスに登録
-            _network.AddPlayer(_state);
-        }
-        
+        // Networkの管理クラスに登録
+        _network.AddPlayer(_state);
     }
 
-    public CarState NetWork()
-    {
-        if(_network == null)
-        {
-            return _state;
-        }
-        return _state;
-    }
+    //public CarState NetWork()
+    //{
+    //    if(_network == null)
+    //    {
+    //        return _state;
+    //    }
+    //    return _state;
+    //}
 
     // 加速処理
     private void Accelerator()

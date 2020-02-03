@@ -42,6 +42,7 @@ public class JsonNetwork : MonoBehaviour
         // ここをNetworkの処理にする。
         var json = JsonUtility.ToJson(carState);
         Debug.Log(json);
+        JsonChange();
     }
 
     // 車のステータス
@@ -54,18 +55,12 @@ public class JsonNetwork : MonoBehaviour
     public void JsonChange()
     {
         string json = "";
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < _playerList.Count; i++)
         {
             // json形式に変換
-            json = JsonUtility.ToJson(_playerList);
-            // Networkに送る
+            json = JsonUtility.ToJson(_playerList[i]);
+            Debug.Log(json);
         }
-        Debug.Log(json);
-    }
-
-    public void SetGoal()
-    {
-
     }
 
     public CarState GetNetworkState(int id)
