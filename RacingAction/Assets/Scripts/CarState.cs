@@ -19,11 +19,6 @@ public struct CarState
     public bool goalCar;
     public byte[] ToByte()
     {
-        pos = new float[3];
-        for(int i = 0; i < pos.Length; i++)
-        {
-            pos[i] = 10.0f;
-        }
         byte[] x = BitConverter.GetBytes(pos[0]);
         byte[] y = BitConverter.GetBytes(pos[1]);
         byte[] z = BitConverter.GetBytes(pos[2]);

@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class main : MonoBehaviour
 {
-    public GameObject gameObject;　//動かすオブジェクトをUnity上でアタッチ
-    public Text text; //座標表示用
+    public GameObject car;　//動かすオブジェクトをUnity上でアタッチ
 
     string ipAddr = "172.20.39.22"; // ホスト側IPアドレス
-    string ipAddr2 = "172.20.39.32"; //クライアント側IPアドレス
+    string ipAddr2 = "172.20.39.22"; //クライアント側IPアドレス
 
-    Vector3 vector3 = new Vector3(0, 0, 0);
     UDPSystem udpSystem;
-    char device = 'A'; // ホスト側動作はA,クライアント側動作はB
+    char device = 'B'; // ホスト側動作はA,クライアント側動作はB
 
     private void Awake()
     {
@@ -42,15 +39,16 @@ public class main : MonoBehaviour
     {
         if (device == 'A')
         {
-            vector3 = gameObject.transform.position;
-            CarState sendData = new CarState();
+            CarState sendData = car.GetComponent<CarController>().GetState();
             udpSystem.Send(sendData.ToByte(), 99);
         }
         if (device == 'B')
         {
-            gameObject.transform.position = vector3;
+            foreach(var bytes in ScanIPAddr.GetByte())
+            {
+                car.transform.position = new Vector3(bytes[0], bytes[1], bytes[2]);
+            }
         }
-        text.text = "(" + vector3.x + "," + vector3.y + "," + vector3.z + ")";
     }
 
     void Receive(byte[] bytes)
